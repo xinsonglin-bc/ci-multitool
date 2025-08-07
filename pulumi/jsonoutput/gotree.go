@@ -101,7 +101,7 @@ func (t *tree) Text(includeColumns bool, col1Start int) string {
 	padding := ""
 	if includeColumns {
 		resCount := utf8.RuneCountInString(res)
-		paddingSize := col1Start - resCount - (t.Depth() * 3)
+		paddingSize := max(0, col1Start - resCount - (t.Depth() * 3))
 		padding = strings.Repeat(" ", paddingSize)
 	}
 	if includeColumns && t.col1 != "" {
